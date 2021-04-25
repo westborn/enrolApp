@@ -1,0 +1,26 @@
+{
+  "name": "enrolapp",
+  "version": "0.0.1",
+  "description": "Enrolment website for U3A",
+  "keywords": [],
+  "author": "George Stone <george@westborn.com.au>",
+  "license": "ISC",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview",
+    "copy-css": "cp dist/assets/index.css dist/index.css.html",
+    "copy-js": "cp dist/assets/index.js dist/index.js.html",
+    "fix-up-js": "node -e \"const fs = require('fs');const fp='dist/index.js.html';const d=fs.readFileSync(fp);fs.writeFileSync(fp, '<script>\\n' + d + '</script>');\"",
+    "doit": "npm npm run copy-js && npm run copy-css && npm run fix-up-js",
+    "push": "npm run build && npm run copy-js && run copy-css && npm run fix-up-js && clasp push"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "next",
+    "@types/google-apps-script": "^1.0.31",
+    "autoprefixer": "^10.2.5",
+    "postcss": "^8.2.9",
+    "tailwindcss": "^2.1.1",
+    "vite": "^2.1.5"
+  }
+}
